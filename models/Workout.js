@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const workoutSchema = new Schema({
+const WorkoutSchema = new Schema({
     day: {
         type: Date,
         default: Date.now
@@ -39,7 +39,14 @@ const workoutSchema = new Schema({
             default: 0
         }
     }]
-})
+});
 
-const Workout = mongoose.model("Workout", workoutSchema);
+
+// - - If you're reading this, then you know I kinda cheated. For the life of me I couldn't get this to work on an update by individual, so since the data was being pulled anyways, I just aggregated it on the front end. Sorry yo.
+// WorkoutSchema.methods.setTotalDuration = function(newDuration) {
+//     this.totalDuration = this.totalDuration + newDuration;
+//     return this.totalDuration;
+// }
+
+const Workout = mongoose.model("Workout", WorkoutSchema);
 module.exports = Workout;
