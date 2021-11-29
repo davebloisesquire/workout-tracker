@@ -10,16 +10,14 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", {
     useNewUrlParser: true,
     useFindAndModify: false,
     useCreateIndex: true
 });
 
-// api routes
-app.use(require("./routes/api"));
-
-//view routes
+// Adding my routes
+app.use(require("./routes/workoutRoutes"));
 app.use(require("./routes/viewRoutes"))
 
 app.listen(PORT, () => {
